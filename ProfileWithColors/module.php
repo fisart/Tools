@@ -72,8 +72,8 @@ class ProfileWithColors extends IPSModule {
             $value = round($value, $digits);
             $fraction = $i / $totalSteps;
             $color = interpolateColor($startColor, $endColor, $fraction);
-            $label = $prefix . number_format($value, $digits) . $suffix;
-            IPS_SetVariableProfileAssociation($profileName, $value, $label, "", $color);
+            $label = number_format($value, $digits);
+            IPS_SetVariableProfileAssociation($profileName, $value, $label, "", $color, $prefix, $suffix);
         }
 
         return "Profile created and associations set successfully with colors.";

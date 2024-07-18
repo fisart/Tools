@@ -42,12 +42,12 @@
     {
       "type": "ValidationTextBox",
       "name": "Prefix",
-      "caption": "Prefix"
+      "caption": "Association Prefix"
     },
     {
       "type": "ValidationTextBox",
       "name": "Suffix",
-      "caption": "Suffix"
+      "caption": "Association Suffix"
     },
     {
       "type": "Button",

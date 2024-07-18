@@ -10,8 +10,8 @@
       "Variable Type": "Variablentyp",
       "Integer": "Ganzzahl",
       "Float": "Gleitkommazahl",
-      "Prefix": "Präfix",
-      "Suffix": "Suffix",
+      "Association Prefix": "Präfix",
+      "Association Suffix": "Suffix",
       "Create Profile": "Profil erstellen"
     },
     "en": {
@@ -24,8 +24,8 @@
       "Variable Type": "Variable Type",
       "Integer": "Integer",
       "Float": "Float",
-      "Prefix": "Prefix",
-      "Suffix": "Suffix",
+      "Association Prefix": "Prefix",
+      "Association Suffix": "Suffix",
       "Create Profile": "Create Profile"
     }
   }
