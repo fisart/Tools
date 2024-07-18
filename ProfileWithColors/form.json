@@ -24,6 +24,13 @@
       "digits": 2
     },
     {
+      "type": "NumberSpinner",
+      "name": "Digits",
+      "caption": "Number of Digits",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
       "type": "SelectColor",
       "name": "StartColor",
       "caption": "Start Color"
@@ -41,11 +48,6 @@
         { "label": "Integer", "value": "integer" },
         { "label": "Float", "value": "float" }
       ]
-    },
-    {
-      "type": "Label",
-      "name": "TruncateMessage",
-      "caption": "Note: If you select the integer profile, any float values entered for Start Value, End Value, and Step Size will be truncated to integers."
     },
     {
       "type": "ValidationTextBox",

@@ -13,6 +13,7 @@ class ProfileWithColors extends IPSModule {
         $this->RegisterPropertyString("VariableType", "integer");
         $this->RegisterPropertyString("Prefix", "");
         $this->RegisterPropertyString("Suffix", "");
+        $this->RegisterPropertyInteger("Digits", 0); // New property for digits
     }
 
     public function ApplyChanges() {
@@ -29,18 +30,20 @@ class ProfileWithColors extends IPSModule {
         $variableType = $this->ReadPropertyString("VariableType");
         $prefix = $this->ReadPropertyString("Prefix");
         $suffix = $this->ReadPropertyString("Suffix");
+        $digits = $this->ReadPropertyInteger("Digits"); // Read the number of digits
 
         // Truncate values to integers if VariableType is integer
         if ($variableType === "integer") {
             $startValue = intval($startValue);
             $endValue = intval($endValue);
             $stepSize = intval($stepSize);
+            $digits = 0; // Ensure digits is 0 for integer type
         }
 
-        return $this->CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix);
+        return $this->CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix, $digits);
     }
 
-    private function CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix) {
+    private function CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix, $digits) {
         function interpolateColor($startColor, $endColor, $fraction) {
             $r1 = ($startColor >> 16) & 0xFF;
             $g1 = ($startColor >> 8) & 0xFF;
@@ -54,21 +57,14 @@ class ProfileWithColors extends IPSModule {
             return ($r << 16) + ($g << 8) + $b;
         }
 
-        function calculateDigits($stepSize) {
-            $stepSizeStr = (string)$stepSize;
-            $pos = strpos($stepSizeStr, '.');
-            return $pos === false ? 0 : strlen($stepSizeStr) - $pos - 1;
-        }
-
         $type = $variableType === "float" ? 2 : 1; // Use 1 for integer
         if (!IPS_VariableProfileExists($profileName)) {
             IPS_CreateVariableProfile($profileName, $type);
         }
 
         IPS_SetVariableProfileValues($profileName, $startValue, $endValue, $stepSize);
-        $digits = $variableType === "float" ? calculateDigits($stepSize) : 0; // Only set digits for floats
         IPS_SetVariableProfileDigits($profileName, $digits);
-        
+
         // Set the prefix and suffix for the profile
         IPS_SetVariableProfileText($profileName, $prefix, $suffix);
 
