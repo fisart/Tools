@@ -53,13 +53,13 @@ class ProfileWithColors extends IPSModule {
             return $pos === false ? 0 : strlen($stepSizeStr) - $pos - 1;
         }
 
-        $type = $variableType === "float" ? 2 : 0;
+        $type = $variableType === "float" ? 2 : 1; // Use 1 for integer
         if (!IPS_VariableProfileExists($profileName)) {
             IPS_CreateVariableProfile($profileName, $type);
         }
 
         IPS_SetVariableProfileValues($profileName, $startValue, $endValue, $stepSize);
-        $digits = calculateDigits($stepSize);
+        $digits = $variableType === "float" ? calculateDigits($stepSize) : 0; // Only set digits for floats
         IPS_SetVariableProfileDigits($profileName, $digits);
         
         // Set the prefix and suffix for the profile
@@ -72,10 +72,10 @@ class ProfileWithColors extends IPSModule {
 
         for ($i = 0; $i <= $totalSteps; $i++) {
             $value = $startValue + ($i * $stepSize);
-            $value = round($value, $digits);
+            $value = $variableType === "float" ? round($value, $digits) : intval($value); // Ensure integer for integer type
             $fraction = $i / $totalSteps;
             $color = interpolateColor($startColor, $endColor, $fraction);
-            IPS_SetVariableProfileAssociation($profileName, $value, number_format($value, $digits), "", $color);
+            IPS_SetVariableProfileAssociation($profileName, $value, strval($value), "", $color);
         }
 
         return "Profile created and associations set successfully with colors.";
