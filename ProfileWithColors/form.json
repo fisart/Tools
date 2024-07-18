@@ -13,7 +13,7 @@
         { "label": "Integer", "value": "integer" },
         { "label": "Float", "value": "float" }
       ],
-      "onChange": "IPS_UpdateFormField('StartValueInt', 'visible', ($VariableType === 'integer')); IPS_UpdateFormField('StartValueFloat', 'visible', ($VariableType === 'float')); IPS_UpdateFormField('EndValueInt', 'visible', ($VariableType === 'integer')); IPS_UpdateFormField('EndValueFloat', 'visible', ($VariableType === 'float')); IPS_UpdateFormField('StepSizeInt', 'visible', ($VariableType === 'integer')); IPS_UpdateFormField('StepSizeFloat', 'visible', ($VariableType === 'float'));"
+      "onChange": "IPS_UpdateFormField('StartValueInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('StartValueFloat', 'visible', $VariableType === 'float'); IPS_UpdateFormField('EndValueInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('EndValueFloat', 'visible', $VariableType === 'float'); IPS_UpdateFormField('StepSizeInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('StepSizeFloat', 'visible', $VariableType === 'float');"
     },
     {
       "type": "NumberSpinner",
