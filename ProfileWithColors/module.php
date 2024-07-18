@@ -30,6 +30,13 @@ class ProfileWithColors extends IPSModule {
         $prefix = $this->ReadPropertyString("Prefix");
         $suffix = $this->ReadPropertyString("Suffix");
 
+        // Truncate values to integers if VariableType is integer
+        if ($variableType === "integer") {
+            $startValue = intval($startValue);
+            $endValue = intval($endValue);
+            $stepSize = intval($stepSize);
+        }
+
         return $this->CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix);
     }
 
@@ -48,7 +55,7 @@ class ProfileWithColors extends IPSModule {
         }
 
         function calculateDigits($stepSize) {
-            $stepSizeStr = rtrim(sprintf('%.10f', $stepSize), '0'); // Ensure trailing zeros are included
+            $stepSizeStr = (string)$stepSize;
             $pos = strpos($stepSizeStr, '.');
             return $pos === false ? 0 : strlen($stepSizeStr) - $pos - 1;
         }
@@ -58,10 +65,10 @@ class ProfileWithColors extends IPSModule {
             IPS_CreateVariableProfile($profileName, $type);
         }
 
-        $digits = calculateDigits($stepSize);
         IPS_SetVariableProfileValues($profileName, $startValue, $endValue, $stepSize);
+        $digits = $variableType === "float" ? calculateDigits($stepSize) : 0; // Only set digits for floats
         IPS_SetVariableProfileDigits($profileName, $digits);
-
+        
         // Set the prefix and suffix for the profile
         IPS_SetVariableProfileText($profileName, $prefix, $suffix);
 
@@ -72,12 +79,7 @@ class ProfileWithColors extends IPSModule {
 
         for ($i = 0; $i <= $totalSteps; $i++) {
             $value = $startValue + ($i * $stepSize);
-            if ($variableType === "float") {
-                $value = round($value / $stepSize) * $stepSize; // Truncate to step size
-                $value = round($value, $digits);
-            } else {
-                $value = intval($value); // Ensure integer for integer type
-            }
+            $value = $variableType === "float" ? round($value, $digits) : intval($value); // Ensure integer for integer type
             $fraction = $i / $totalSteps;
             $color = interpolateColor($startColor, $endColor, $fraction);
             IPS_SetVariableProfileAssociation($profileName, $value, strval($value), "", $color);
