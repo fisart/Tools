@@ -73,7 +73,8 @@ class ProfileWithColors extends IPSModule {
         for ($i = 0; $i <= $totalSteps; $i++) {
             $value = $startValue + ($i * $stepSize);
             if ($variableType === "float") {
-                $value = round($value, $digits); // Round to the correct number of digits
+                $value = round($value / $stepSize) * $stepSize; // Truncate to step size
+                $value = round($value, $digits);
             } else {
                 $value = intval($value); // Ensure integer for integer type
             }
