@@ -30,13 +30,6 @@ class ProfileWithColors extends IPSModule {
         $prefix = $this->ReadPropertyString("Prefix");
         $suffix = $this->ReadPropertyString("Suffix");
 
-        // Truncate values to integers if VariableType is integer
-        if ($variableType === "integer") {
-            $startValue = intval($startValue);
-            $endValue = intval($endValue);
-            $stepSize = intval($stepSize);
-        }
-
         return $this->CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix);
     }
 
@@ -79,7 +72,12 @@ class ProfileWithColors extends IPSModule {
 
         for ($i = 0; $i <= $totalSteps; $i++) {
             $value = $startValue + ($i * $stepSize);
-            $value = $variableType === "float" ? round($value, $digits) : intval($value); // Ensure integer for integer type
+            if ($variableType === "float") {
+                $value = round($value / $stepSize) * $stepSize; // Truncate to step size
+                $value = round($value, $digits);
+            } else {
+                $value = intval($value); // Ensure integer for integer type
+            }
             $fraction = $i / $totalSteps;
             $color = interpolateColor($startColor, $endColor, $fraction);
             IPS_SetVariableProfileAssociation($profileName, $value, strval($value), "", $color);
