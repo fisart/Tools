@@ -48,7 +48,7 @@ class ProfileWithColors extends IPSModule {
         }
 
         function calculateDigits($stepSize) {
-            $stepSizeStr = number_format($stepSize, 10, '.', ''); // Ensure trailing zeros are included
+            $stepSizeStr = rtrim(sprintf('%.10f', $stepSize), '0'); // Ensure trailing zeros are included
             $pos = strpos($stepSizeStr, '.');
             return $pos === false ? 0 : strlen($stepSizeStr) - $pos - 1;
         }
@@ -73,8 +73,7 @@ class ProfileWithColors extends IPSModule {
         for ($i = 0; $i <= $totalSteps; $i++) {
             $value = $startValue + ($i * $stepSize);
             if ($variableType === "float") {
-                $value = round($value / $stepSize) * $stepSize; // Truncate to step size
-                $value = round($value, $digits);
+                $value = round($value, $digits); // Round to the correct number of digits
             } else {
                 $value = intval($value); // Ensure integer for integer type
             }
