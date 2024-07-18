@@ -48,7 +48,7 @@ class ProfileWithColors extends IPSModule {
         }
 
         function calculateDigits($stepSize) {
-            $stepSizeStr = rtrim(sprintf('%.10f', $stepSize), '0'); // Ensure trailing zeros are included
+            $stepSizeStr = number_format($stepSize, 10, '.', ''); // Ensure trailing zeros are included
             $pos = strpos($stepSizeStr, '.');
             return $pos === false ? 0 : strlen($stepSizeStr) - $pos - 1;
         }
