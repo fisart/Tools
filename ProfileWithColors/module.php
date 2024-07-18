@@ -61,6 +61,9 @@ class ProfileWithColors extends IPSModule {
         IPS_SetVariableProfileValues($profileName, $startValue, $endValue, $stepSize);
         $digits = calculateDigits($stepSize);
         IPS_SetVariableProfileDigits($profileName, $digits);
+        
+        // Set the prefix and suffix for the profile
+        IPS_SetVariableProfileText($profileName, $prefix, $suffix);
 
         $totalSteps = ($endValue - $startValue) / $stepSize;
         if ($totalSteps > 128) {
@@ -72,8 +75,7 @@ class ProfileWithColors extends IPSModule {
             $value = round($value, $digits);
             $fraction = $i / $totalSteps;
             $color = interpolateColor($startColor, $endColor, $fraction);
-            $label = $prefix . number_format($value, $digits) . $suffix;
-            IPS_SetVariableProfileAssociation($profileName, $value, $label, "", $color);
+            IPS_SetVariableProfileAssociation($profileName, $value, number_format($value, $digits), "", $color);
         }
 
         return "Profile created and associations set successfully with colors.";
