@@ -5,11 +5,11 @@ class ProfileWithColors extends IPSModule {
     public function Create() {
         parent::Create();
         $this->RegisterPropertyString("ProfileName", "MyVariableProfile");
-        $this->RegisterPropertyFloat("StartValueFloat", 0);
+        $this->RegisterPropertyFloat("StartValueFloat", 0.0);
         $this->RegisterPropertyInteger("StartValueInt", 0);
-        $this->RegisterPropertyFloat("EndValueFloat", 100);
+        $this->RegisterPropertyFloat("EndValueFloat", 100.0);
         $this->RegisterPropertyInteger("EndValueInt", 100);
-        $this->RegisterPropertyFloat("StepSizeFloat", 1);
+        $this->RegisterPropertyFloat("StepSizeFloat", 1.0);
         $this->RegisterPropertyInteger("StepSizeInt", 1);
         $this->RegisterPropertyInteger("StartColor", 0xFF0000);
         $this->RegisterPropertyInteger("EndColor", 0x0000FF);

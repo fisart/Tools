@@ -12,44 +12,45 @@
       "options": [
         { "label": "Integer", "value": "integer" },
         { "label": "Float", "value": "float" }
-      ]
+      ],
+      "onChange": "IPS_UpdateFormField('StartValueInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('StartValueFloat', 'visible', $VariableType === 'float'); IPS_UpdateFormField('EndValueInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('EndValueFloat', 'visible', $VariableType === 'float'); IPS_UpdateFormField('StepSizeInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('StepSizeFloat', 'visible', $VariableType === 'float');"
     },
     {
       "type": "NumberSpinner",
       "name": "StartValueInt",
-      "caption": "Start Value",
-      "visible": false
+      "caption": "Start Value (Integer)",
+      "visible": true
     },
     {
       "type": "NumberSpinner",
       "name": "StartValueFloat",
-      "caption": "Start Value",
+      "caption": "Start Value (Float)",
       "digits": 2,
       "visible": false
     },
     {
       "type": "NumberSpinner",
       "name": "EndValueInt",
-      "caption": "End Value",
-      "visible": false
+      "caption": "End Value (Integer)",
+      "visible": true
     },
     {
       "type": "NumberSpinner",
       "name": "EndValueFloat",
-      "caption": "End Value",
+      "caption": "End Value (Float)",
       "digits": 2,
       "visible": false
     },
     {
       "type": "NumberSpinner",
       "name": "StepSizeInt",
-      "caption": "Step Size",
-      "visible": false
+      "caption": "Step Size (Integer)",
+      "visible": true
     },
     {
       "type": "NumberSpinner",
       "name": "StepSizeFloat",
-      "caption": "Step Size",
+      "caption": "Step Size (Float)",
       "digits": 2,
       "visible": false
     },
@@ -78,7 +79,5 @@
       "caption": "Create Profile",
       "onClick": "PWC_CreateProfileWithColors($id);"
     }
-  ],
-  "actions": [],
-  "status": []
+  ]
 }
