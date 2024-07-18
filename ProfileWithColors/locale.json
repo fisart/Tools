@@ -1,8 +1,32 @@
 {
-    "translations": {
-        "de": {
-            "Translation 1": "Übersetzung 1",
-            "Translation 2": "Übersetzung 2"
-        }
+  "translations": {
+    "de": {
+      "Profile Name": "Profilname",
+      "Start Value": "Startwert",
+      "End Value": "Endwert",
+      "Step Size": "Schrittgröße",
+      "Start Color": "Startfarbe",
+      "End Color": "Endfarbe",
+      "Variable Type": "Variablentyp",
+      "Integer": "Ganzzahl",
+      "Float": "Gleitkommazahl",
+      "Prefix": "Präfix",
+      "Suffix": "Suffix",
+      "Create Profile": "Profil erstellen"
+    },
+    "en": {
+      "Profile Name": "Profile Name",
+      "Start Value": "Start Value",
+      "End Value": "End Value",
+      "Step Size": "Step Size",
+      "Start Color": "Start Color",
+      "End Color": "End Color",
+      "Variable Type": "Variable Type",
+      "Integer": "Integer",
+      "Float": "Float",
+      "Prefix": "Prefix",
+      "Suffix": "Suffix",
+      "Create Profile": "Create Profile"
     }
+  }
 }

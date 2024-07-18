@@ -40,6 +40,16 @@
       ]
     },
     {
+      "type": "ValidationTextBox",
+      "name": "Prefix",
+      "caption": "Prefix"
+    },
+    {
+      "type": "ValidationTextBox",
+      "name": "Suffix",
+      "caption": "Suffix"
+    },
+    {
       "type": "Button",
       "caption": "Create Profile",
       "onClick": "PWC_CreateProfileWithColors($id);"
