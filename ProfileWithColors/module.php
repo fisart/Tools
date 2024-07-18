@@ -48,7 +48,7 @@ class ProfileWithColors extends IPSModule {
         }
 
         function calculateDigits($stepSize) {
-            $stepSizeStr = (string)$stepSize;
+            $stepSizeStr = rtrim(sprintf('%.10f', $stepSize), '0'); // Ensure trailing zeros are included
             $pos = strpos($stepSizeStr, '.');
             return $pos === false ? 0 : strlen($stepSizeStr) - $pos - 1;
         }
@@ -58,10 +58,10 @@ class ProfileWithColors extends IPSModule {
             IPS_CreateVariableProfile($profileName, $type);
         }
 
+        $digits = calculateDigits($stepSize);
         IPS_SetVariableProfileValues($profileName, $startValue, $endValue, $stepSize);
-        $digits = $variableType === "float" ? calculateDigits($stepSize) : 0; // Only set digits for floats
         IPS_SetVariableProfileDigits($profileName, $digits);
-        
+
         // Set the prefix and suffix for the profile
         IPS_SetVariableProfileText($profileName, $prefix, $suffix);
 
