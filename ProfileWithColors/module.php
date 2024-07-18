@@ -5,9 +5,9 @@ class ProfileWithColors extends IPSModule {
     public function Create() {
         parent::Create();
         $this->RegisterPropertyString("ProfileName", "MyVariableProfile");
-        $this->RegisterPropertyFloat("StartValue", 0);
-        $this->RegisterPropertyFloat("EndValue", 100);
-        $this->RegisterPropertyFloat("StepSize", 1);
+        $this->RegisterPropertyFloat("StartValue", 0.0);
+        $this->RegisterPropertyFloat("EndValue", 100.0);
+        $this->RegisterPropertyFloat("StepSize", 1.0);
         $this->RegisterPropertyInteger("StartColor", 0xFF0000);
         $this->RegisterPropertyInteger("EndColor", 0x0000FF);
         $this->RegisterPropertyString("VariableType", "integer");
@@ -18,7 +18,7 @@ class ProfileWithColors extends IPSModule {
     public function ApplyChanges() {
         parent::ApplyChanges();
     }
-    
+
     public function CreateProfileWithColors() {
         $profileName = $this->ReadPropertyString("ProfileName");
         $startValue = $this->ReadPropertyFloat("StartValue");
@@ -29,6 +29,13 @@ class ProfileWithColors extends IPSModule {
         $variableType = $this->ReadPropertyString("VariableType");
         $prefix = $this->ReadPropertyString("Prefix");
         $suffix = $this->ReadPropertyString("Suffix");
+
+        // Truncate values to integers if VariableType is integer
+        if ($variableType === "integer") {
+            $startValue = intval($startValue);
+            $endValue = intval($endValue);
+            $stepSize = intval($stepSize);
+        }
 
         return $this->CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix);
     }
