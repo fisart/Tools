@@ -6,22 +6,52 @@
       "caption": "Profile Name"
     },
     {
+      "type": "Select",
+      "name": "VariableType",
+      "caption": "Variable Type",
+      "options": [
+        { "label": "Integer", "value": "integer" },
+        { "label": "Float", "value": "float" }
+      ]
+    },
+    {
       "type": "NumberSpinner",
-      "name": "StartValue",
+      "name": "StartValueInt",
       "caption": "Start Value",
-      "digits": 2
+      "visible": false
     },
     {
       "type": "NumberSpinner",
-      "name": "EndValue",
+      "name": "StartValueFloat",
+      "caption": "Start Value",
+      "digits": 2,
+      "visible": false
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "EndValueInt",
       "caption": "End Value",
-      "digits": 2
+      "visible": false
     },
     {
       "type": "NumberSpinner",
-      "name": "StepSize",
+      "name": "EndValueFloat",
+      "caption": "End Value",
+      "digits": 2,
+      "visible": false
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "StepSizeInt",
       "caption": "Step Size",
-      "digits": 2
+      "visible": false
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "StepSizeFloat",
+      "caption": "Step Size",
+      "digits": 2,
+      "visible": false
     },
     {
       "type": "SelectColor",
@@ -32,15 +62,6 @@
       "type": "SelectColor",
       "name": "EndColor",
       "caption": "End Color"
-    },
-    {
-      "type": "Select",
-      "name": "VariableType",
-      "caption": "Variable Type",
-      "options": [
-        { "label": "Integer", "value": "integer" },
-        { "label": "Float", "value": "float" }
-      ]
     },
     {
       "type": "ValidationTextBox",
@@ -57,5 +78,7 @@
       "caption": "Create Profile",
       "onClick": "PWC_CreateProfileWithColors($id);"
     }
-  ]
+  ],
+  "actions": [],
+  "status": []
 }

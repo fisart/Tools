@@ -5,9 +5,12 @@ class ProfileWithColors extends IPSModule {
     public function Create() {
         parent::Create();
         $this->RegisterPropertyString("ProfileName", "MyVariableProfile");
-        $this->RegisterPropertyFloat("StartValue", 0);
-        $this->RegisterPropertyFloat("EndValue", 100);
-        $this->RegisterPropertyFloat("StepSize", 1);
+        $this->RegisterPropertyFloat("StartValueFloat", 0);
+        $this->RegisterPropertyInteger("StartValueInt", 0);
+        $this->RegisterPropertyFloat("EndValueFloat", 100);
+        $this->RegisterPropertyInteger("EndValueInt", 100);
+        $this->RegisterPropertyFloat("StepSizeFloat", 1);
+        $this->RegisterPropertyInteger("StepSizeInt", 1);
         $this->RegisterPropertyInteger("StartColor", 0xFF0000);
         $this->RegisterPropertyInteger("EndColor", 0x0000FF);
         $this->RegisterPropertyString("VariableType", "integer");
@@ -21,14 +24,22 @@ class ProfileWithColors extends IPSModule {
     
     public function CreateProfileWithColors() {
         $profileName = $this->ReadPropertyString("ProfileName");
-        $startValue = $this->ReadPropertyFloat("StartValue");
-        $endValue = $this->ReadPropertyFloat("EndValue");
-        $stepSize = $this->ReadPropertyFloat("StepSize");
-        $startColor = $this->ReadPropertyInteger("StartColor");
-        $endColor = $this->ReadPropertyInteger("EndColor");
         $variableType = $this->ReadPropertyString("VariableType");
         $prefix = $this->ReadPropertyString("Prefix");
         $suffix = $this->ReadPropertyString("Suffix");
+        
+        if ($variableType === "float") {
+            $startValue = $this->ReadPropertyFloat("StartValueFloat");
+            $endValue = $this->ReadPropertyFloat("EndValueFloat");
+            $stepSize = $this->ReadPropertyFloat("StepSizeFloat");
+        } else {
+            $startValue = $this->ReadPropertyInteger("StartValueInt");
+            $endValue = $this->ReadPropertyInteger("EndValueInt");
+            $stepSize = $this->ReadPropertyInteger("StepSizeInt");
+        }
+        
+        $startColor = $this->ReadPropertyInteger("StartColor");
+        $endColor = $this->ReadPropertyInteger("EndColor");
 
         return $this->CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix);
     }
