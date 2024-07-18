@@ -1,0 +1,48 @@
+{
+  "elements": [
+    {
+      "type": "ValidationTextBox",
+      "name": "ProfileName",
+      "caption": "Profile Name"
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "StartValue",
+      "caption": "Start Value"
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "EndValue",
+      "caption": "End Value"
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "StepSize",
+      "caption": "Step Size"
+    },
+    {
+      "type": "ColorPicker",
+      "name": "StartColor",
+      "caption": "Start Color"
+    },
+    {
+      "type": "ColorPicker",
+      "name": "EndColor",
+      "caption": "End Color"
+    },
+    {
+      "type": "Select",
+      "name": "VariableType",
+      "caption": "Variable Type",
+      "options": [
+        { "label": "Integer", "value": "integer" },
+        { "label": "Float", "value": "float" }
+      ]
+    },
+    {
+      "type": "Button",
+      "caption": "Create Profile",
+      "onClick": "PWC_CreateProfileWithColors($id);"
+    }
+  ]
+}
