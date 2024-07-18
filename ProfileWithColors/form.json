@@ -21,12 +21,12 @@
       "caption": "Step Size"
     },
     {
-      "type": "ColorPicker",
+      "type": "SelectColor",
       "name": "StartColor",
       "caption": "Start Color"
     },
     {
-      "type": "ColorPicker",
+      "type": "SelectColor",
       "name": "EndColor",
       "caption": "End Color"
     },
