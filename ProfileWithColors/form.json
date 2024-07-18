@@ -40,14 +40,12 @@
       "options": [
         { "label": "Integer", "value": "integer" },
         { "label": "Float", "value": "float" }
-      ],
-      "onChange": "IPS_UpdateFormField('TruncateMessage', 'visible', $VariableType === 'integer');"
+      ]
     },
     {
       "type": "Label",
       "name": "TruncateMessage",
-      "caption": "Note: If you select the integer profile, any float values entered for Start Value, End Value, and Step Size will be truncated to integers.",
-      "visible": false
+      "caption": "Note: If you select the integer profile, any float values entered for Start Value, End Value, and Step Size will be truncated to integers."
     },
     {
       "type": "ValidationTextBox",
