@@ -8,17 +8,20 @@
     {
       "type": "NumberSpinner",
       "name": "StartValue",
-      "caption": "Start Value"
+      "caption": "Start Value",
+      "digits": 2
     },
     {
       "type": "NumberSpinner",
       "name": "EndValue",
-      "caption": "End Value"
+      "caption": "End Value",
+      "digits": 2
     },
     {
       "type": "NumberSpinner",
       "name": "StepSize",
-      "caption": "Step Size"
+      "caption": "Step Size",
+      "digits": 2
     },
     {
       "type": "SelectColor",
