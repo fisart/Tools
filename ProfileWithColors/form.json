@@ -50,6 +50,11 @@
       ]
     },
     {
+      "type": "Label",
+      "name": "TruncateMessage",
+      "caption": "Note: If you select the integer profile, any float values entered for Start Value, End Value, and Step Size will be truncated to integers. Additionally, existing profiles with identical names will be overwritten."
+    },
+    {
       "type": "ValidationTextBox",
       "name": "Prefix",
       "caption": "Association Prefix"
