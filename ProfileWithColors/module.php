@@ -38,6 +38,9 @@ class ProfileWithColors extends IPSModule {
             $endValue = intval($endValue);
             $stepSize = intval($stepSize);
             $digits = 0; // Ensure digits is 0 for integer type
+        } else {
+            // Limit the number of decimal places of the step size
+            $stepSize = round($stepSize, $digits);
         }
 
         return $this->CreateAssociationProfileWithColors($profileName, $startValue, $endValue, $stepSize, $startColor, $endColor, $variableType, $prefix, $suffix, $digits);
