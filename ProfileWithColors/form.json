@@ -6,53 +6,19 @@
       "caption": "Profile Name"
     },
     {
-      "type": "Select",
-      "name": "VariableType",
-      "caption": "Variable Type",
-      "options": [
-        { "label": "Integer", "value": "integer" },
-        { "label": "Float", "value": "float" }
-      ],
-      "onChange": "IPS_UpdateFormField('StartValueInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('StartValueFloat', 'visible', $VariableType === 'float'); IPS_UpdateFormField('EndValueInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('EndValueFloat', 'visible', $VariableType === 'float'); IPS_UpdateFormField('StepSizeInt', 'visible', $VariableType === 'integer'); IPS_UpdateFormField('StepSizeFloat', 'visible', $VariableType === 'float');"
+      "type": "NumberSpinner",
+      "name": "StartValue",
+      "caption": "Start Value"
     },
     {
       "type": "NumberSpinner",
-      "name": "StartValueInt",
-      "caption": "Start Value (Integer)",
-      "visible": true
+      "name": "EndValue",
+      "caption": "End Value"
     },
     {
       "type": "NumberSpinner",
-      "name": "StartValueFloat",
-      "caption": "Start Value (Float)",
-      "digits": 2,
-      "visible": false
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "EndValueInt",
-      "caption": "End Value (Integer)",
-      "visible": true
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "EndValueFloat",
-      "caption": "End Value (Float)",
-      "digits": 2,
-      "visible": false
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "StepSizeInt",
-      "caption": "Step Size (Integer)",
-      "visible": true
-    },
-    {
-      "type": "NumberSpinner",
-      "name": "StepSizeFloat",
-      "caption": "Step Size (Float)",
-      "digits": 2,
-      "visible": false
+      "name": "StepSize",
+      "caption": "Step Size"
     },
     {
       "type": "SelectColor",
@@ -63,6 +29,15 @@
       "type": "SelectColor",
       "name": "EndColor",
       "caption": "End Color"
+    },
+    {
+      "type": "Select",
+      "name": "VariableType",
+      "caption": "Variable Type",
+      "options": [
+        { "label": "Integer", "value": "integer" },
+        { "label": "Float", "value": "float" }
+      ]
     },
     {
       "type": "ValidationTextBox",
